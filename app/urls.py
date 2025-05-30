@@ -6,8 +6,11 @@ from drf_spectacular.views import (
     SpectacularSwaggerView,
 )
 from rest_framework.routers import DefaultRouter
+from django.conf import settings
+from django.conf.urls.static import static
 
 from core.views import UserViewSet, CategoriaViewSet, EditoraViewSet, AutorViewSet, LivroViewSet
+from uploader.router import router as uploader_router
 
 router = DefaultRouter()
 router.register(r'usuarios', UserViewSet, basename='usuarios')
@@ -25,11 +28,14 @@ urlpatterns = [
         SpectacularSwaggerView.as_view(url_name='schema'),
         name='swagger-ui',
     ),
-        path(
+    path(
         'api/redoc/',
         SpectacularRedocView.as_view(url_name='schema'),
         name='redoc',
     ),
     # API
     path('api/', include(router.urls)),
+    path("api/media/", include(uploader_router.urls)),  # nova linha para uploader
 ]
+
+urlpatterns += static(settings.MEDIA_ENDPOINT, document_root=settings.MEDIA_ROOT)
