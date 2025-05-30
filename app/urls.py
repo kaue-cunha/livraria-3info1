@@ -7,18 +7,12 @@ from drf_spectacular.views import (
 )
 from rest_framework.routers import DefaultRouter
 
-from core.views import UserViewSet
-from core.views import CategoriaViewSet # nova linha
+from core.views import UserViewSet, CategoriaViewSet, EditoraViewSet
 
 router = DefaultRouter()
-router.register(r"categorias", CategoriaViewSet) # nova linha
-router.register(r"users", UserViewSet, basename="users")
-
-from core.views import UserViewSet
-
-router = DefaultRouter()
-
 router.register(r'usuarios', UserViewSet, basename='usuarios')
+router.register(r'categorias', CategoriaViewSet)
+router.register(r'editoras', EditoraViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,7 +23,7 @@ urlpatterns = [
         SpectacularSwaggerView.as_view(url_name='schema'),
         name='swagger-ui',
     ),
-    path(
+        path(
         'api/redoc/',
         SpectacularRedocView.as_view(url_name='schema'),
         name='redoc',
