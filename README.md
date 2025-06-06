@@ -10,7 +10,7 @@ Este projeto inclui uma API que está hospedada e disponível publicamente via r
 
 Você pode acessá-la através do seguinte link:
 
-[[Link da sua API no Render]](https://livraria-3info1-i7uu.onrender.com)
+[[Link do Projeto no Render]](https://livraria-3info1-i7uu.onrender.com)
 
 Fique à vontade para explorar os endpoints e interagir com nosso projeto!
 
